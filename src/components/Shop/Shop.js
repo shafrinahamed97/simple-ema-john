@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Shop.css';
+import Products from '../Products/Products';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -7,11 +8,17 @@ const Shop = () => {
         fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, []);
     return (
         <div className='shop-container'>
             <div className="products-container">
-                <h3>This is For Products: {products.length}</h3>
+                {
+                    products.map(product => <Products
+                        key={product.id}
+                        product={product}
+
+                    ></Products>)
+                }
             </div>
             <div className="cart-container">
                 <h4>Order Summary</h4>
