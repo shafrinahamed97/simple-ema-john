@@ -8,14 +8,12 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     useEffect(() => {
-        console.log('products load before fetch')
         fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
             .then(res => res.json())
             .then(data => setProducts(data));
         console.log('products loaded');
     }, []);
     useEffect(() => {
-        console.log('Local Storage first line')
         const storedCart = getStoredCart();
         const savedCart = [];
         for (const id in storedCart) {
@@ -29,7 +27,7 @@ const Shop = () => {
 
         }
         setCart(savedCart);
-        // console.log('local storage finished')
+
     }, [products]);
 
     const handleAddToCart = (product) => {
