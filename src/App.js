@@ -18,10 +18,12 @@ function App() {
     children: [
       {
         path: '/',
+
         element: <Shop></Shop>
       },
       {
         path: '/orders',
+        loader: () => fetch('products.json'),
         element: <Orders></Orders>
       },
       {
